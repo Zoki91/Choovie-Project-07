@@ -1,0 +1,53 @@
+/* body {
+  background: #222
+    url("https://images.pexels.com/photos/33129/popcorn-movie-party-entertainment.jpg?cs=srgb&dl=pexels-pixabay-33129.jpg&fm=jpg")
+    center center no-repeat;
+  background-size: cover;
+  height: 100%;
+  text-align: center;
+  align-items: center;
+  position: relative;
+} */
+
+#header {
+  margin-top: 20vh;
+  text-align: center;
+  justify-content: center;
+  align-self: center;
+  margin-bottom: 40px;
+  font-size: 120px;
+  color: rgb(246, 239, 238);
+  display: flex;
+}
+span {
+  color: red;
+}
+.checkBox {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  size: 40px;
+}
+.container {
+  margin-bottom: 30px;
+}
+.mr-15 {
+  margin-right: 40px;
+}
+.navbar {
+  background-color: brown;
+}
+.navbar-brand {
+  color: rgb(246, 239, 238);
+  font-size: 30px;
+  float: right;
+}
+.streamService {
+  color: red;
+  margin-right: 40px;
+}
+
+/* .col-md-4 {
+    margin-left: 6rem;
+  } */
