@@ -56,16 +56,20 @@ function getMovie(movie) {
             for(var i = 0; i < data.Search.length; i++){
                 var movieDiv = $('<div>');
                 movieDiv.attr('class',"movies")
+                movieDiv.attr('style',"background-color: white; padding: 10px; margin:20px; border-radius:10px; border: solid #A52A2A 3px")
                 var imdbID = data.Search[i].imdbID;
                 movieDiv.attr('id', imdbID)
                 
                 //creates the title element and creates stores the movie title in the title variable
                 var titleEl = $('<h3>');
+                titleEl.attr('style','display:inline-block; position:relative; top:-120px; padding:10px')
                 var title = data.Search[i].Title;
 
                 //creates the year element and creates stores the release year in the year variable
                 var yearEl = $('<p>');
+                yearEl.attr('style', "font-style:italic")
                 var year = data.Search[i].Year;
+
                 
                 //creates poster element and stores url required for src
                 var posterEl = $('<img>');
@@ -74,12 +78,18 @@ function getMovie(movie) {
                 //creates a plot element and stores text as loading
                 var plotEl = $('<p>');
                 plotEl.attr('class', "plotDescription")
-                plotEl.attr('data-plot',i+1);
+                plotEl.attr('data-plot',i);
                 var plot = "Loading.....";
 
                 //creates an element for streaming service data
 
-                var streamEl = $('<div>')
+                var streamEl = $('<div>');
+
+                //creating a details button
+
+                var detailsBtn = $('<button>');
+                detailsBtn.attr('id', i);
+                detailsBtn.attr('class', 'details-button btn btn-primary btn-block');
 
                 //appends the text into the elements
                 titleEl.text(title);
@@ -87,8 +97,10 @@ function getMovie(movie) {
                 yearEl.text(year)
                 yearEl.attr("class","movie-child")
                 posterEl.attr("src",poster);
-                posterEl.attr("style","width:100px; height:100px")
+                posterEl.attr("style","width:200px; height:300px")
                 plotEl.text(plot);
+                detailsBtn.text("Details");
+                console.log(imdbID);
 
                 //Appends the elements 
                 movieList.append(movieDiv);
@@ -97,6 +109,7 @@ function getMovie(movie) {
                 movieDiv.append(yearEl);
                 movieDiv.append(plotEl)
                 movieDiv.append(streamEl);
+                movieDiv.append(detailsBtn);
                 
 
             }
@@ -116,6 +129,7 @@ function movieDetails(){
     movies.each(function(){
         var uniqueMovieIdentifier = $(this).attr("id");
         // console.log(uniqueMovieIdentifier)
+        // console.log(uniqueMovieIdentifier)
         var plotUrl = 'https://www.omdbapi.com/?apikey=4cf0dfc5&i=' + uniqueMovieIdentifier;
         fetch(plotUrl)
         .then(function (response) {
@@ -123,20 +137,21 @@ function movieDetails(){
             return response.json();
           })
             .then(function(plotdata){
+                // console.log(plotdata)
                 details.push(plotdata)
       })
     });
-
     console.log(details);
     applyingDetailsRun = setTimeout(function(){
         for(x=0; x < details.length; x++){
-            var y = x+1;
+            var y = x;
             stringX = y.toString();
             dataTarget = $('.plotDescription[data-plot=' + stringX +']')
+            
             // console.log(dataTarget.text());
             dataTarget.text(details[x].Plot)
         }
-    },5000);
+    },2000);
 }
 
 
