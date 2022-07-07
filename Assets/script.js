@@ -75,7 +75,7 @@ function getMovie(movie) {
                 var plotEl = $('<p>');
                 plotEl.attr('class', "plotDescription")
                 plotEl.attr('data-plot',i+1);
-                var plot = "Loading....."
+                var plot = "Loading.....";
 
                 
 
@@ -127,9 +127,11 @@ function movieDetails(){
     console.log(details);
     applyingDetailsRun = setTimeout(function(){
         for(x=0; x < details.length; x++){
-            var textOutput = $("[data-plot='" + x+1 + "']").text("Hello")
-            console.log(x)
-            console.log(textOutput);
+            var y = x+1;
+            stringX = y.toString();
+            dataTarget = $('.plotDescription[data-plot=' + stringX +']')
+            // console.log(dataTarget.text());
+            dataTarget.text(details[x].Plot)
         }
     },5000);
 }
