@@ -77,7 +77,9 @@ function getMovie(movie) {
                 plotEl.attr('data-plot',i+1);
                 var plot = "Loading.....";
 
-                
+                //creates an element for streaming service data
+
+                var streamEl = $('<div>')
 
                 //appends the text into the elements
                 titleEl.text(title);
@@ -94,6 +96,7 @@ function getMovie(movie) {
                 movieDiv.append(titleEl);
                 movieDiv.append(yearEl);
                 movieDiv.append(plotEl)
+                movieDiv.append(streamEl);
                 
 
             }
