@@ -55,19 +55,17 @@ function getMovie(movie) {
         .then(function(data){
             for(var i = 0; i < data.Search.length; i++){
                 var movieDiv = $('<div>');
-                movieDiv.attr('class',"movies")
-                movieDiv.attr('style',"background-color: white; padding: 10px; margin:20px; border-radius:10px; border: solid #A52A2A 3px")
+                movieDiv.attr('class',"movies movie-div")
                 var imdbID = data.Search[i].imdbID;
                 movieDiv.attr('id', imdbID)
                 
                 //creates the title element and creates stores the movie title in the title variable
                 var titleEl = $('<h3>');
-                titleEl.attr('style','display:inline-block; position:relative; top:-120px; padding:10px')
+                // titleEl.attr('style','display:inline-block; position:relative; top:-120px; padding:10px')
                 var title = data.Search[i].Title;
 
                 //creates the year element and creates stores the release year in the year variable
                 var yearEl = $('<p>');
-                yearEl.attr('style', "font-style:italic")
                 var year = data.Search[i].Year;
 
                 
@@ -93,9 +91,9 @@ function getMovie(movie) {
 
                 //appends the text into the elements
                 titleEl.text(title);
-                titleEl.attr("class","movie-child")
+                titleEl.attr("class","movie-child movie-title")
                 yearEl.text(year)
-                yearEl.attr("class","movie-child")
+                yearEl.attr("class","movie-child movie-year")
                 posterEl.attr("src",poster);
                 posterEl.attr("style","width:200px; height:300px")
                 plotEl.text(plot);
