@@ -67,7 +67,7 @@ padding: 10px;
   border: solid #A52A2A 3PX;
 }
 
-.movie-year, imdbRating, boxOffice{
+.movie-year, .imdbRating, .boxOffice{
   font-style:italic;
   display: inline-block;
   position: relative;
