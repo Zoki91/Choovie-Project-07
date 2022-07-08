@@ -52,27 +52,37 @@ span {
     margin-left: 6rem;
   } */
 
-.movie-title{
-display: inline-block;
-position: relative;
-top:-120px;
-padding: 10px;
-}
-
-.movie-div{
+/* CSS for Movie Display*/
+.movie-div {
+  display: flex;
+  flex-direction: row;
   background-color: white;
   padding: 10px;
   margin: 20px;
   border-radius: 10px;
-  border: solid #A52A2A 3PX;
+  border: solid #a52a2a 3px;
+  flex: 1;
 }
 
-.movie-year, .imdbRating, .boxOffice{
-  font-style:italic;
-  display: inline-block;
-  position: relative;
-  top:-120px;
-  padding: 20px;
+.movie-child {
+  flex: 2 1 auto;
+  font-style: italic;
+  display: flex;
+  top: 0px;
+  padding-left: 10px;
+  padding-right: 20px;
+}
+
+.movie-year,
+.imdbRating,
+.boxOffice {
+  font-style: italic;
+  display: flex;
+  flex: 1;
+  top: 0px;
+  padding-left: 20px;
+  padding-right: 20px;
+  justify-content: space-around;
 }
 
 /* CSS FOR MY LIST AND MODAL */
