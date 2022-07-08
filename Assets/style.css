@@ -85,3 +85,12 @@ padding: 10px;
   border-radius: 10rem;
   cursor: pointer;
 }
+
+/* CSS or Search Button */
+.searchButton {
+  padding-left: 3em;
+  padding-right: 3em;
+  font-size: 1.5em;
+  border-radius: 10em;
+}
+
