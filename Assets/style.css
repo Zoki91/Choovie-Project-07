@@ -94,3 +94,37 @@ padding: 10px;
   border-radius: 10em;
 }
 
+/* CSS for Movie Display*/
+.movie-div {
+  display: flex;
+  flex-direction: row;
+  background-color: white;
+  padding: 10px;
+  margin: 20px;
+  border-radius: 10px;
+  border: solid #a52a2a 3px;
+  flex: 1;
+}
+
+.movie-title,
+.movie-year,
+.imdbRating,
+.boxOffice {
+  font-style: italic;
+  display: flex;
+  flex: 1;
+  top: 0px;
+  padding-left: 20px;
+  padding-right: 20px;
+  justify-content: space-around;
+}
+.details-button {
+  font-style: italic;
+  align-items: center;
+  top: 0px;
+  padding-left: 20px;
+  padding-right: 20px;
+  height: 40px;
+  width: 100px;
+}
+
