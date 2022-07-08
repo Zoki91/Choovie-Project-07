@@ -89,7 +89,9 @@ function getMovie(movie) {
 
                 //creates an element for streaming service data
 
-                var streamEl = $('<div>');
+                var streamEl = $('<a href>');
+                streamEl.attr('class', "streamLinks");
+                streamEl.attr('data-stream',i);
 
                 //box office element
                 var boxOfficeEl = $('<p>');
@@ -130,7 +132,7 @@ function getMovie(movie) {
                 movieDiv.append(detailsBtn);
                 
 
-            }
+            };
 
         } 
     
@@ -156,7 +158,7 @@ function movieDetails(){
 
     for(i=0; i < ids.length; i++){
         var plotUrl = 'https://www.omdbapi.com/?apikey=4cf0dfc5&i=' + ids[i];
-        console.log(plotUrl)
+        // console.log(plotUrl)
         fetch(plotUrl)
         .then(function (response) {
             //storing data as an json object
@@ -188,6 +190,76 @@ function movieDetails(){
             // console.log(dataTarget.text());
         }
     },2000);
+
+
+
+    // Second API call to get streaming info from imdbID get
+    streamAvailability = setTimeout(function(){
+        var streamOptions = {
+        method: 'GET',
+        headers: {
+            'X-RapidAPI-Key': '447785d6femshe88b6a464e3c243p16334fjsneb1d57287602',
+            'X-RapidAPI-Host': 'streaming-availability.p.rapidapi.com'
+        }};
+
+        var serviceList = '&service=netflix%20prime%20disney%20hbo%20hulu%20paramount%20starz%20showtime%20apple%20mubi%20stan%20now%20crave%20iplayer';
+        
+        var streamDetails= [];
+
+    
+       
+        for(x=0; x < details.length; x++){
+            var streamURL = 'https://streaming-availability.p.rapidapi.com/get/basic?country=au' + serviceList + '&imdb_id=' + details[x].imdbID + '&output_language=en';
+        
+            fetch(streamURL, streamOptions)
+            .then(function(response) {
+                
+                if(response.status === 404){
+                    streamDetails.push("");
+                   }
+                return response.json();
+             })
+              .then(function(data){
+
+                streamDetails.push(data);
+                console.log(streamDetails);
+                
+                var show1 = JSON.stringify(data.streamingInfo);
+                console.log(show1);
+                
+            
+         
+               var stream0 = $('.streamLinks[data-stream=0]')
+               var stream1 = $('.streamLinks[data-stream=1]')
+               var stream2 = $('.streamLinks[data-stream=2]')
+               var stream3 = $('.streamLinks[data-stream=3]')
+               var stream4 = $('.streamLinks[data-stream=4]')
+               var stream5 = $('.streamLinks[data-stream=5]')
+               var stream6 = $('.streamLinks[data-stream=6]')
+               var stream7 = $('.streamLinks[data-stream=7]')
+               var stream8 = $('.streamLinks[data-stream=8]')
+               var stream9 = $('.streamLinks[data-stream=9]')
+            
+               stream0.attr("href", "test" );
+               stream1.attr("href", "test");
+               stream2.attr("href", "test");
+               stream3.attr("href", "test");
+               stream4.attr("href", "test");
+               stream5.attr("href", "test");
+               stream6.attr("href", "test");
+               stream7.attr("href", "test");
+               stream8.attr("href", "test");
+               stream9.attr("href", "test");
+               
+                
+                
+            });
+    
+            // console.log(streamDetails);
+        }
+        },2000);
+
+
 
     // movies.each(function(){
     //     var uniqueMovieIdentifier = $(this).attr("id");
