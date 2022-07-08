@@ -151,3 +151,19 @@ padding: 10px;
   }
 }
 
+@media only screen and (max-width: 890px) {
+  .movie-title,
+.movie-year,
+.imdbRating,
+.boxOffice{
+  font-style: italic;
+  display: flex;
+  flex: 1;
+  top: 0px;
+  padding:5px;
+  margin:0px;
+  justify-content: space-around;
+}
+  }
+}
+
