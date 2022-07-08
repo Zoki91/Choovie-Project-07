@@ -75,3 +75,13 @@ padding: 10px;
   padding: 20px;
 }
 
+/* CSS FOR MY LIST AND MODAL */
+#myList {
+  float: right;
+  margin-top: 1em;
+  border: none;
+  background-color: #fff;
+  color: #444;
+  border-radius: 10rem;
+  cursor: pointer;
+}
