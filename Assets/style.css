@@ -38,15 +38,15 @@ span {
 .navbar {
   background-color: brown;
 }
-.navbar-brand {
+/* .navbar-brand {
   color: rgb(246, 239, 238);
   font-size: 30px;
   float: right;
-}
-.streamService {
+} */
+/* .streamService {
   color: red;
   margin-right: 40px;
-}
+} */
 
 /* .col-md-4 {
     margin-left: 6rem;
@@ -67,11 +67,11 @@ padding: 10px;
   border: solid #A52A2A 3PX;
 }
 
-.movie-year{
+.movie-year, imdbRating, boxOffice{
   font-style:italic;
   display: inline-block;
   position: relative;
   top:-120px;
-  padding: 10px;
+  padding: 20px;
 }
 
