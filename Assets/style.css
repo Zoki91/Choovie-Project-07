@@ -83,6 +83,11 @@ span {
   padding-right: 20px;
 }
 
+
+.movie-my-list{
+  margin-top:10%;
+}
+
 .movie-year,
 .imdbRating,
 .boxOffice {
@@ -168,3 +173,4 @@ span {
     justify-content: space-around;
   }
 }
+
