@@ -176,8 +176,10 @@ span {
   border-radius: 10em;
   background-color: #16222a;
 }
-
-
+/*CSS for Add To My List */
+.btn-block + .btn-block {
+  margin-top: 0px;
+}
 .details-button {
   font-style: italic;
   align-items: center;
@@ -185,7 +187,7 @@ span {
   padding-left: 20px;
   padding-right: 20px;
   height: 40px;
-  width: 100px;
+  width: 150px;
   background-color: #16222a;
 }
 
