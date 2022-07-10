@@ -32,8 +32,10 @@ function init (){
 
         //creating a poster element
         var posterEl = $('<img>');
+        posterEl.attr('src',myListMovies[i].poster);
         posterEl.attr('class','poster');
         posterEl.attr('data-poster',i);
+        posterEl.attr("style","width:200px; height:300px; margin-left:-4px; margin-top: 80px; border: 2px solid black")
 
         //creating a year element
         var yearEl = $('<p>');
@@ -119,31 +121,31 @@ function movieDetailRequest(){
  
     }
 
-    applyingDetailsRun = setTimeout(function(){
-        details.sort(function (a,b){
-            return ids.indexOf(a.imdbID) - ids.indexOf(b.imdbID)
-        })
-        for(x=0; x < details.length; x++){
-            var y = x;
-            stringX = y.toString();
-            //Adding Poster to elements
-            posterTarget = $('.poster[data-poster=' + stringX + ']')
-            posterTarget.attr('src', details[x].Poster)
-            posterTarget.attr("style","width:200px; height:300px; margin-left:-4px; margin-top: 80px; border: 2px solid black")
+    // applyingDetailsRun = setTimeout(function(){
+    //     details.sort(function (a,b){
+    //         return ids.indexOf(a.imdbID) - ids.indexOf(b.imdbID)
+    //     })
+    //     for(x=0; x < details.length; x++){
+    //         var y = x;
+    //         stringX = y.toString();
+    //         //Adding Poster to elements
+    //         posterTarget = $('.poster[data-poster=' + stringX + ']')
+    //         posterTarget.attr('src', details[x].Poster)
+    //         posterTarget.attr("style","width:200px; height:300px; margin-left:-4px; margin-top: 80px; border: 2px solid black")
 
-            plotTarget = $('.plot[data-plot=' + stringX + ']')
-            plotTarget.text(details[x].Plot)
+    //         plotTarget = $('.plot[data-plot=' + stringX + ']')
+    //         plotTarget.text(details[x].Plot)
 
-            yearTarget = $('.year[data-year=' + stringX + ']')
-            yearTarget.text(details[x].Year)
-            // dataTarget = $('.plotDescription[data-plot=' + stringX +']')
-            // imdbTarget = $('.imdbRating[data-imdb=' + stringX +']')
-            // boxOfficeTarget = $('.boxOffice[data-boxoffice=' + stringX +']')
-            // dataTarget.text(details[x].Plot)
-            // imdbTarget.text(details[x].imdbRating)
-            // boxOfficeTarget.text(details[x].BoxOffice)
-        }
-    },2000);
+    //         yearTarget = $('.year[data-year=' + stringX + ']')
+    //         yearTarget.text(details[x].Year)
+    //         // dataTarget = $('.plotDescription[data-plot=' + stringX +']')
+    //         // imdbTarget = $('.imdbRating[data-imdb=' + stringX +']')
+    //         // boxOfficeTarget = $('.boxOffice[data-boxoffice=' + stringX +']')
+    //         // dataTarget.text(details[x].Plot)
+    //         // imdbTarget.text(details[x].imdbRating)
+    //         // boxOfficeTarget.text(details[x].BoxOffice)
+    //     }
+    // },2000);
 
 
 }
