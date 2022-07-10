@@ -215,6 +215,7 @@ function movieDetails(){
 
 $(document).on('click','.myList', function(event){
     event.preventDefault();
+    
     var savedID = $(this).parent().attr('id');
     var movieTitle = $(this).siblings('.movie-title').text();
     var savedPoster = $(this).siblings('.movie-poster').attr('src');
@@ -222,9 +223,9 @@ $(document).on('click','.myList', function(event){
 
     if(myListMovies){
         for(i=0; i < myListMovies.length; i++){
-            var titleCheck = $(this).siblings('.movie-title').text();
+            var titleCheck = $(this).parent().attr("id");
             console.log(titleCheck)
-            var arrayTitleText = myListMovies[i].name;
+            var arrayTitleText = myListMovies[i].id;
             console.log(arrayTitleText)
             if(titleCheck === arrayTitleText){
                 window.alert("Looks like this is already on your list!")
@@ -232,7 +233,8 @@ $(document).on('click','.myList', function(event){
             }
         }
     }
- 
+    
+    $(this).text("+ Added");
     savedMovieDetails = {
         id: savedID,
         name: movieTitle,
