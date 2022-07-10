@@ -1,7 +1,7 @@
 
 var myMoviesArray = [];
 
-var movieListEl = $('#myList')
+var movieListEl = $('#myListPage')
 
 function init (){
     if(localStorage.getItem("Movie-Details")===null){
