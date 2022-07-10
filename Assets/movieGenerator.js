@@ -2,15 +2,21 @@
 var myMoviesArray = [];
 var details =[];
 var movieListEl = $('#myListPage')
+var emptyPage = $('#emptyPage')
 
 function init (){
-    if(localStorage.getItem("Movie-Details")===null){
-        window.alert("Oops! It looks like you don't have anything saved");
+    var emptyCheck = JSON.parse(localStorage.getItem("Movie-Details"));
+    console.log(emptyCheck.length)
+    if(emptyCheck.length == 0){
+        var emptyListEl = $('<h2>');
+        emptyListEl.attr('class','emptyList')
+        emptyListEl.text('Looks like your List is empty! Head back to the search and find some movies to add here!');
+        emptyPage.append(emptyListEl);
         return
     } else{
     var myListMovies = JSON.parse(localStorage.getItem("Movie-Details"));
-    console.log(myListMovies)
-    console.log(myListMovies.length);
+    // console.log(myListMovies)
+    // console.log(myListMovies.length);
 
     for(var i = 0; i < myListMovies.length; i++){
         //creating a div for each movies details to be saved
@@ -97,7 +103,7 @@ function movieDetailRequest(){
         var movieIds = $(this).attr("id");
         ids.push(movieIds)
     })
-    console.log(ids)
+    // console.log(ids)
 
     for(i=0; i < ids.length; i++){
         var plotUrl = 'https://www.omdbapi.com/?apikey=4cf0dfc5&i=' + ids[i];
@@ -123,7 +129,7 @@ function movieDetailRequest(){
             //Adding Poster to elements
             posterTarget = $('.poster[data-poster=' + stringX + ']')
             posterTarget.attr('src', details[x].Poster)
-            posterTarget.attr("style","width:200px; height:300px; margin-left:-4px; margin-top: 80px")
+            posterTarget.attr("style","width:200px; height:300px; margin-left:-4px; margin-top: 80px; border: 2px solid black")
 
             plotTarget = $('.plot[data-plot=' + stringX + ']')
             plotTarget.text(details[x].Plot)

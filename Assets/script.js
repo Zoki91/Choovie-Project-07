@@ -132,7 +132,7 @@ function getMovie(movie) {
                 titleEl.text(title);
                 titleEl.attr("class","movie-child movie-title")
                 yearEl.text(year)
-                yearEl.attr("class","movie-child movie-year")
+                yearEl.attr("class","movie-year")
                 posterEl.attr("src",poster);
                 posterEl.attr("style","width:200px; height:300px")
                 plotEl.text(plot);
