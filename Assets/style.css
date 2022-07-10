@@ -18,10 +18,14 @@
   font-size: 120px;
   color: rgb(246, 239, 238);
   display: flex;
+
 }
+
 span {
-  color: red;
+  color: red
+
 }
+
 .checkBox {
   display: flex;
   flex-direction: row;
@@ -29,15 +33,19 @@ span {
   align-items: center;
   size: 40px;
 }
+
 .container {
   margin-bottom: 30px;
 }
+
 .mr-15 {
   margin-right: 40px;
 }
+
 .navbar {
-  background-color: brown;
+  background-color: #080808;
 }
+
 /* .navbar-brand {
   color: rgb(246, 239, 238);
   font-size: 30px;
@@ -56,12 +64,14 @@ span {
 .movie-div {
   display: flex;
   flex-direction: row;
-  background-color: white;
+  background-color: #ECE9E6;
+  color: black;
   padding: 10px;
   margin: 20px;
   border-radius: 10px;
-  border: solid #a52a2a 3px;
+  border: solid #000000 3px;
   flex: 1;
+
 }
 
 .movie-child {
@@ -90,10 +100,9 @@ span {
   float: right;
   margin-top: 1em;
   border: none;
-  background-color: #fff;
-  color: #444;
   border-radius: 10rem;
   cursor: pointer;
+  background-color: #16222a;
 }
 
 /* CSS or Search Button */
@@ -102,6 +111,7 @@ span {
   padding-right: 3em;
   font-size: 1.5em;
   border-radius: 10em;
+  background-color: #16222a;
 }
 
 
@@ -113,18 +123,22 @@ span {
   padding-right: 20px;
   height: 40px;
   width: 100px;
+  background-color: #16222a;
 }
+
 /*CSS for Media Query*/
 @media only screen and (max-width: 890px) {
   .movie-div {
     flex-direction: column;
   }
 }
+
 @media only screen and (max-width: 890px) {
   .movie-div img {
     margin: auto;
   }
 }
+
 @media only screen and (max-width: 890px) {
   #header {
     margin-top: 20vh;
@@ -135,22 +149,22 @@ span {
     font-size: 60px;
     color: rgb(246, 239, 238);
     display: flex;
+
   }
 }
 
 @media only screen and (max-width: 890px) {
+
   .movie-title,
-.movie-year,
-.imdbRating,
-.boxOffice{
-  font-style: italic;
-  display: flex;
-  flex: 1;
-  top: 0px;
-  padding:5px;
-  margin:0px;
-  justify-content: space-around;
-}
+  .movie-year,
+  .imdbRating,
+  .boxOffice {
+    font-style: italic;
+    display: flex;
+    flex: 1;
+    top: 0px;
+    padding: 5px;
+    margin: 0px;
+    justify-content: space-around;
   }
 }
-
