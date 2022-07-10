@@ -4,9 +4,11 @@ button = $('.searchButton');
 
 movieList = $('#list');
 
+myListAdd =$('.myList');
 
+var details =[];
 
-
+var storageDetails = JSON.parse(localStorage.getItem("Movie-Details")) || [];
 
 //function around what happens when the button is clicked
 button.on('click', function(event){
@@ -40,12 +42,9 @@ button.on('click', function(event){
         getMovie(movie)
         movieDetailsRun = setTimeout(movieDetails,3000);
     }else{
+        window.alert("Looks like you haven't entered a movie title! Please try again.")
         return
     }
-
- 
-
-    
 })
 
 function getMovie(movie) {
@@ -57,8 +56,11 @@ function getMovie(movie) {
     fetch(apiUrl)
       .then(function (response) {
         //storing data as an json object
-
-        return response.json();
+        if(response.status === 'False'){
+            return
+        }
+        return response.json()
+        
       })
         .then(function(data){
             // console.log(data.Search)
@@ -104,8 +106,15 @@ function getMovie(movie) {
                 //creating a details button
 
                 var detailsBtn = $('<button>');
-                detailsBtn.attr('id', i);
+                detailsBtn.attr('id', i+10);
                 detailsBtn.attr('class', 'details-button btn btn-primary btn-block');
+
+                //creating a my list button
+
+                var myListBtn = $('<button>');
+                myListBtn.attr('id',i+20);
+                myListBtn.attr('class', 'details-button btn btn-primary btn-block myList');
+
 
                 //appends the text into the elements
                 titleEl.text(title);
@@ -116,6 +125,8 @@ function getMovie(movie) {
                 posterEl.attr("style","width:200px; height:300px")
                 plotEl.text(plot);
                 detailsBtn.text("Details");
+                myListBtn.text('Add to My List');
+
                 // console.log(imdbID);
 
                 //Appends the elements 
@@ -128,11 +139,12 @@ function getMovie(movie) {
                 movieDiv.append(plotEl)
                 movieDiv.append(streamEl);
                 movieDiv.append(detailsBtn);
-                
+                movieDiv.append(myListBtn)
 
             }
 
         } 
+
     
     
 )
@@ -179,33 +191,26 @@ function movieDetails(){
             dataTarget = $('.plotDescription[data-plot=' + stringX +']')
             imdbTarget = $('.imdbRating[data-imdb=' + stringX +']')
             boxOfficeTarget = $('.boxOffice[data-boxoffice=' + stringX +']')
-            // console.log(dataTarget)
-            // console.log(stringX)
-            // console.log(details[x].imdbID)
             dataTarget.text(details[x].Plot)
             imdbTarget.text(details[x].imdbRating)
             boxOfficeTarget.text(details[x].BoxOffice)
-            // console.log(dataTarget.text());
         }
     },2000);
 
-    // movies.each(function(){
-    //     var uniqueMovieIdentifier = $(this).attr("id");
-    //     // console.log(uniqueMovieIdentifier)
-    //     // console.log(uniqueMovieIdentifier)
-    //     var ploUrl = 'https://www.omdbapi.com/?apikey=4cf0dfc5&i=' + uniqueMovieIdentifier;
-    //     // console.log(plotUrl)
-    //     fetch(ploUrl)
-    //     .then(function (response) {
-    //         //storing data as an json object
-    //         return response.json();
-    //       })
-    //         .then(function(plotdata){
-    //             // console.log(plotdata)
-    //             details.push(plotdata)            
-    //         })
-    // });
-    // console.log(details);
-
-
 }
+
+
+$(document).on('click','.myList', function(event){
+    event.preventDefault();
+    var savedID = $(this).parent().attr('id');
+    var movieTitle = $(this).siblings('.movie-title').text();
+    savedMovieDetails = {
+        id: savedID,
+        name: movieTitle
+    };
+    storageDetails.push(savedMovieDetails);
+    console.log(storageDetails)
+    localStorage.setItem("Movie-Details",JSON.stringify(storageDetails));
+})
+
+
