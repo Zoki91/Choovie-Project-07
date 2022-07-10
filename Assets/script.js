@@ -2,6 +2,8 @@
 
 button = $('.searchButton');
 
+myListBtn = $('.myListButton')
+
 movieList = $('#list');
 
 myListAdd =$('.myList');
@@ -9,6 +11,14 @@ myListAdd =$('.myList');
 var details =[];
 
 var storageDetails = JSON.parse(localStorage.getItem("Movie-Details")) || [];
+
+myListBtn = $('.myListButton')
+
+
+myListBtn.on('click', function(event){
+    event.preventDefault();
+    window.location.replace('./moviePage.html')
+})
 
 //function around what happens when the button is clicked
 button.on('click', function(event){
@@ -212,5 +222,7 @@ $(document).on('click','.myList', function(event){
     console.log(storageDetails)
     localStorage.setItem("Movie-Details",JSON.stringify(storageDetails));
 })
+
+
 
 
