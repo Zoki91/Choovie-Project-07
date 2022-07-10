@@ -83,9 +83,7 @@ span {
   padding-right: 20px;
 }
 
-.details-button {
-  width:150px;
-}
+
 .movie-my-list{
   margin-top:10%;
 }
@@ -167,7 +165,7 @@ span {
   padding-left: 20px;
   padding-right: 20px;
   height: 40px;
-  width: 100px;
+  width: 150px;
   background-color: #16222a;
 }
 
