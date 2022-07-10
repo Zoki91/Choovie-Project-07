@@ -83,7 +83,9 @@ span {
   padding-right: 20px;
 }
 
-
+.details-button {
+  width:150px;
+}
 .movie-my-list{
   margin-top:10%;
 }
