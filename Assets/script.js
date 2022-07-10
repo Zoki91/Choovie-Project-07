@@ -93,6 +93,7 @@ function getMovie(movie) {
                 
                 //creates poster element and stores url required for src
                 var posterEl = $('<img>');
+                posterEl.attr('class', 'movie-poster');
                 var poster = data.Search[i].Poster;
 
                 //creates a plot element and stores text as loading
@@ -216,6 +217,7 @@ $(document).on('click','.myList', function(event){
     event.preventDefault();
     var savedID = $(this).parent().attr('id');
     var movieTitle = $(this).siblings('.movie-title').text();
+    var savedPoster = $(this).siblings('.movie-poster').attr('src');
     var myListMovies = JSON.parse(localStorage.getItem("Movie-Details"));
 
     if(myListMovies){
@@ -233,7 +235,8 @@ $(document).on('click','.myList', function(event){
  
     savedMovieDetails = {
         id: savedID,
-        name: movieTitle
+        name: movieTitle,
+        poster: savedPoster
     };
     storageDetails.push(savedMovieDetails);
     console.log(storageDetails)
