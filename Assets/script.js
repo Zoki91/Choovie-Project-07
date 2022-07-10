@@ -15,6 +15,8 @@ var storageDetails = JSON.parse(localStorage.getItem("Movie-Details")) || [];
 myListBtn = $('.myListButton')
 
 
+
+
 myListBtn.on('click', function(event){
     event.preventDefault();
     window.location.replace('./moviePage.html')
@@ -214,6 +216,21 @@ $(document).on('click','.myList', function(event){
     event.preventDefault();
     var savedID = $(this).parent().attr('id');
     var movieTitle = $(this).siblings('.movie-title').text();
+    var myListMovies = JSON.parse(localStorage.getItem("Movie-Details"));
+
+    if(myListMovies){
+        for(i=0; i < myListMovies.length; i++){
+            var titleCheck = $(this).siblings('.movie-title').text();
+            console.log(titleCheck)
+            var arrayTitleText = myListMovies[i].name;
+            console.log(arrayTitleText)
+            if(titleCheck === arrayTitleText){
+                window.alert("Looks like this is already on your list!")
+                return
+            }
+        }
+    }
+ 
     savedMovieDetails = {
         id: savedID,
         name: movieTitle
@@ -222,6 +239,8 @@ $(document).on('click','.myList', function(event){
     console.log(storageDetails)
     localStorage.setItem("Movie-Details",JSON.stringify(storageDetails));
 })
+
+
 
 
 

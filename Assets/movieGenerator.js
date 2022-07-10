@@ -29,21 +29,16 @@ function init (){
         deleteBtn.text('Seen it?');
         deleteBtn.attr('class','delete-mylist-element')
 
-
-
-
-
-
         //appending elements to the page
         movieListEl.append(movieDiv);
         movieDiv.append(movieTitleEl);
         movieDiv.append(deleteBtn);
-
-        
     }}
 }
 
 init();
+
+
 
 $(document).on('click','.delete-mylist-element', function(event){
     event.preventDefault();
