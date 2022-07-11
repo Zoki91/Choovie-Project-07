@@ -18,6 +18,10 @@ var duplicateModal = $('#duplicate-myModal');
 
 var duplicateModalSpan = $('.duplicate-close');
 
+var detailsModal = $('#details-myModal');
+
+var detailsModalSpan = $('.details-close');
+
 
 
 
@@ -124,7 +128,12 @@ function getMovie(movie) {
 
                 var detailsBtn = $('<button>');
                 detailsBtn.attr('id', i+10);
-                detailsBtn.attr('class', 'details-button btn btn-primary btn-block');
+                detailsBtn.attr('class', 'details-button btn btn-primary btn-block details-button-modal');
+
+                //creating data-targets for details section
+
+                var director = $('.director');
+                director.attr('data-director',i);
 
                 //creating a my list button
 
@@ -260,6 +269,24 @@ $(document).on('click','.myList', function(event){
     console.log(storageDetails)
     localStorage.setItem("Movie-Details",JSON.stringify(storageDetails));
 })
+
+
+$(document).on('click','.details-button-modal', function(event){
+    console.log(event.target.id)
+    console.log(detailsModal.attr('id'));
+    detailsModal.attr('style','display:block')
+
+
+
+    window.onclick= function(event){
+        if (event.target.id === detailsModal.attr('id')) {
+            detailsModal.attr('style','display:none');
+          }
+        if(event.target.className === detailsModalSpan.attr('class')){
+              detailsModal.attr('style','display:none');
+          }
+    }})
+
 
 
 
