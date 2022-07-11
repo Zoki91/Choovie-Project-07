@@ -13,7 +13,9 @@ AS A Movie Lover! I WANT to be able to search for a movie from the Choovie World
 
 <img src="https://i.ibb.co/tJ5KkM2/Screenshot-1.png" alt="screenshot" width="800"/>
 
-<img src="https://i.ibb.co/tJ5KkM2/Screenshot-1.png" alt="screenshot" width="800"/>
+<img src="https://i.ibb.co/vc85Bnk/Screenshot-2.png" alt="screenshot" width="800"/>
+
+<img src="https://i.ibb.co/mcBVGCq/Screenshot-3.png" alt="screenshot" width="800"/>
 
 #
 
@@ -30,7 +32,7 @@ https://zoki91.github.io/Choovie-Project-07/
 - HTML 
 - CSS
 - Javascript
--Bootflat
+- Bootflat
 
 #
 
