@@ -14,6 +14,10 @@ var storageDetails = JSON.parse(localStorage.getItem("Movie-Details")) || [];
 
 myListBtn = $('.myListButton')
 
+var duplicateModal = $('#duplicate-myModal');
+
+var duplicateModalSpan = $('.duplicate-close');
+
 
 
 
@@ -228,7 +232,19 @@ $(document).on('click','.myList', function(event){
             var arrayTitleText = myListMovies[i].id;
             console.log(arrayTitleText)
             if(titleCheck === arrayTitleText){
-                window.alert("Looks like this is already on your list!")
+                // window.alert("Looks like this is already on your list!")
+                duplicateModal.attr('style','display:block')
+                window.onclick = function(event) {
+                    console.log(event.target.className);
+                    console.log(duplicateModal)
+                    if (event.target.id === duplicateModal.attr('id')) {
+                      duplicateModal.attr('style','display:none');
+                    }
+                    if(event.target.className === duplicateModalSpan.attr('class')){
+                        duplicateModal.attr('style','display:none');
+                    }
+                  }
+
                 return
             }
         }
