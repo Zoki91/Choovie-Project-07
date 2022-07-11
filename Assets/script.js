@@ -224,72 +224,6 @@ function movieDetails(){
             boxOfficeTarget.text(details[x].BoxOffice)
         }
     },2000);
-
-}
-
-
-$(document).on('click','.myList', function(event){
-    event.preventDefault();
-    
-    var savedID = $(this).parent().attr('id');
-    var movieTitle = $(this).siblings('.movie-title').text();
-    var savedPoster = $(this).siblings('.movie-poster').attr('src');
-    var myListMovies = JSON.parse(localStorage.getItem("Movie-Details"));
-
-    if(myListMovies){
-        for(i=0; i < myListMovies.length; i++){
-            var titleCheck = $(this).parent().attr("id");
-            console.log(titleCheck)
-            var arrayTitleText = myListMovies[i].id;
-            console.log(arrayTitleText)
-            if(titleCheck === arrayTitleText){
-                // window.alert("Looks like this is already on your list!")
-                duplicateModal.attr('style','display:block')
-                window.onclick = function(event) {
-                    console.log(event.target.className);
-                    console.log(duplicateModal)
-                    if (event.target.id === duplicateModal.attr('id')) {
-                      duplicateModal.attr('style','display:none');
-                    }
-                    if(event.target.className === duplicateModalSpan.attr('class')){
-                        duplicateModal.attr('style','display:none');
-                    }
-                  }
-
-                return
-            }
-        }
-    }
-    
-    $(this).text("+ Added");
-    savedMovieDetails = {
-        id: savedID,
-        name: movieTitle,
-        poster: savedPoster
-    };
-    storageDetails.push(savedMovieDetails);
-    console.log(storageDetails)
-    localStorage.setItem("Movie-Details",JSON.stringify(storageDetails));
-})
-
-
-$(document).on('click','.details-button-modal', function(event){
-    console.log(event.target.id)
-    console.log(detailsModal.attr('id'));
-    detailsModal.attr('style','display:block')
-
-    //need to insert specific movie data here
-
-
-    window.onclick= function(event){
-        if (event.target.id === detailsModal.attr('id')) {
-            detailsModal.attr('style','display:none');
-          }
-        if(event.target.className === detailsModalSpan.attr('class')){
-              detailsModal.attr('style','display:none');
-          }
-    }})
-
 // Second API call to get streaming info from imdbID get
     streamAvailability = setTimeout(function(){
         var streamOptions = {
@@ -369,6 +303,72 @@ $(document).on('click','.details-button-modal', function(event){
             // console.log(streamDetails);
         }
         },2000)
+}
+
+
+$(document).on('click','.myList', function(event){
+    event.preventDefault();
+    
+    var savedID = $(this).parent().attr('id');
+    var movieTitle = $(this).siblings('.movie-title').text();
+    var savedPoster = $(this).siblings('.movie-poster').attr('src');
+    var myListMovies = JSON.parse(localStorage.getItem("Movie-Details"));
+
+    if(myListMovies){
+        for(i=0; i < myListMovies.length; i++){
+            var titleCheck = $(this).parent().attr("id");
+            console.log(titleCheck)
+            var arrayTitleText = myListMovies[i].id;
+            console.log(arrayTitleText)
+            if(titleCheck === arrayTitleText){
+                // window.alert("Looks like this is already on your list!")
+                duplicateModal.attr('style','display:block')
+                window.onclick = function(event) {
+                    console.log(event.target.className);
+                    console.log(duplicateModal)
+                    if (event.target.id === duplicateModal.attr('id')) {
+                      duplicateModal.attr('style','display:none');
+                    }
+                    if(event.target.className === duplicateModalSpan.attr('class')){
+                        duplicateModal.attr('style','display:none');
+                    }
+                  }
+
+                return
+            }
+        }
+    }
+    
+    $(this).text("+ Added");
+    savedMovieDetails = {
+        id: savedID,
+        name: movieTitle,
+        poster: savedPoster
+    };
+    storageDetails.push(savedMovieDetails);
+    console.log(storageDetails)
+    localStorage.setItem("Movie-Details",JSON.stringify(storageDetails));
+})
+
+
+$(document).on('click','.details-button-modal', function(event){
+    console.log(event.target.id)
+    console.log(detailsModal.attr('id'));
+    detailsModal.attr('style','display:block')
+
+    //need to insert specific movie data here
+
+
+    window.onclick= function(event){
+        if (event.target.id === detailsModal.attr('id')) {
+            detailsModal.attr('style','display:none');
+          }
+        if(event.target.className === detailsModalSpan.attr('class')){
+              detailsModal.attr('style','display:none');
+          }
+    }})
+
+
 
 
 
