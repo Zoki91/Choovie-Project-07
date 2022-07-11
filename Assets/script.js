@@ -112,7 +112,9 @@ function getMovie(movie) {
 
                 //creates an element for streaming service data
 
-                var streamEl = $('<div>');
+                var streamEl = $('<a>');
+                streamEl.attr('class', "streamLinks");
+                streamEl.attr('data-stream',i);
 
                 //box office element
                 var boxOfficeEl = $('<p>');
@@ -288,6 +290,85 @@ $(document).on('click','.details-button-modal', function(event){
           }
     }})
 
+// Second API call to get streaming info from imdbID get
+    streamAvailability = setTimeout(function(){
+        var streamOptions = {
+        method: 'GET',
+        headers: {
+            'X-RapidAPI-Key': '447785d6femshe88b6a464e3c243p16334fjsneb1d57287602',
+            'X-RapidAPI-Host': 'streaming-availability.p.rapidapi.com'
+        }};
+
+        var serviceList = '&service=netflix%20prime%20disney%20hbo%20hulu%20paramount%20starz%20showtime%20apple%20mubi%20stan%20now%20crave%20iplayer';
+        
+        var streamDetails= [];
+
+    
+       
+        for(x=0; x < details.length; x++){
+            var streamURL = 'https://streaming-availability.p.rapidapi.com/get/basic?country=au' + serviceList + '&imdb_id=' + details[x].imdbID + '&output_language=en';
+            var streamTitle = JSON.stringify(details[x].Title);
+            console.log(streamTitle);
+            fetch(streamURL, streamOptions)
+            .then(function(response) {
+            
+                if(response.status === 404){
+                    streamDetails.push(["Not a Film", "Not Found"]);
+                   };
+                return response.json();
+             })
+              .then(function(data){
+
+                if(JSON.stringify(data.streamingInfo) === "{}"){
+                    streamDetails.push(["Unavailable", "No Streams Available in AU"]);
+                   }
+                else if (!(JSON.stringify(data.streamingInfo) === "{}")){
+                streamDetails.push([data.originalTitle, (JSON.stringify(data.streamingInfo)).split('"')[7]]);
+                };
+                console.log(streamDetails);
+                
+               
+                
+            
+         
+               var stream0 = $('.streamLinks[data-stream=0]')
+               var stream1 = $('.streamLinks[data-stream=1]')
+               var stream2 = $('.streamLinks[data-stream=2]')
+               var stream3 = $('.streamLinks[data-stream=3]')
+               var stream4 = $('.streamLinks[data-stream=4]')
+               var stream5 = $('.streamLinks[data-stream=5]')
+               var stream6 = $('.streamLinks[data-stream=6]')
+               var stream7 = $('.streamLinks[data-stream=7]')
+               var stream8 = $('.streamLinks[data-stream=8]')
+               var stream9 = $('.streamLinks[data-stream=9]')
+            
+               stream0.attr("href", streamDetails[0][1]);
+               stream1.attr("href", streamDetails[1][1]);
+               stream2.attr("href", streamDetails[2][1]);
+               stream3.attr("href", streamDetails[3][1]);
+               stream4.attr("href", streamDetails[4][1]);
+               stream5.attr("href", streamDetails[5][1]);
+               stream6.attr("href", streamDetails[6][1]);
+               stream7.attr("href", streamDetails[7][1]);
+               stream8.attr("href", streamDetails[8][1]);
+               stream9.attr("href", streamDetails[9][1]);
+               
+               stream0.text("Stream Link: " + streamDetails[0][0]);
+               stream1.text("Stream Link: " + streamDetails[1][0]);
+               stream2.text("Stream Link: " + streamDetails[2][0]);
+               stream3.text("Stream Link: " + streamDetails[3][0]);
+               stream4.text("Stream Link: " + streamDetails[4][0]);
+               stream5.text("Stream Link: " + streamDetails[5][0]);
+               stream6.text("Stream Link: " + streamDetails[6][0]);
+               stream7.text("Stream Link: " + streamDetails[7][0]);
+               stream8.text("Stream Link: " + streamDetails[8][0]);
+               stream9.text("Stream Link: " + streamDetails[9][0]);
+                
+            });
+    
+            // console.log(streamDetails);
+        }
+        },2000)
 
 
 
