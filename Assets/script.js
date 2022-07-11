@@ -276,6 +276,7 @@ $(document).on('click','.details-button-modal', function(event){
     console.log(detailsModal.attr('id'));
     detailsModal.attr('style','display:block')
 
+    //need to insert specific movie data here
 
 
     window.onclick= function(event){
